@@ -138,6 +138,10 @@ public:
    */
   int getNumClinets() const;
 
+  /// Clear the Complete Access bit in the CoE capabilities list.  
+  /// Resolves SOEM issue "Sensor not entering OP state #251", see https://github.com/OpenEtherCATsociety/SOEM/issues/251.
+  void ClearCompleteAccessCOE(int slave) const;
+
 private:
   bool initSoem(const std::string& ifname);
 

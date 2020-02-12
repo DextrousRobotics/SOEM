@@ -233,8 +233,7 @@ bool EtherCatManager::initSoem(const std::string& ifname) {
     return false;
   }
 
-  //TODO: https://github.com/OpenEtherCATsociety/SOEM/issues/251
-  // ec_slave[3].CoEdetails &= ~ECT_COEDET_SDOCA;
+  ClearCompleteAccessCOE(3);
 
   // configure IOMap
   int iomap_size = ec_config_map(iomap_);
@@ -246,6 +245,14 @@ bool EtherCatManager::initSoem(const std::string& ifname) {
   // '0' here addresses all slaves
   if (ec_statecheck(0, EC_STATE_SAFE_OP, EC_TIMEOUTSTATE*4) != EC_STATE_SAFE_OP)
   {
+    fprintf(stderr,"Not all slaves reached safe operational state.\n");
+    ec_readstate();
+    for(int i = 1; i<=ec_slavecount ; ++i) {
+      if(ec_slave[i].state != EC_STATE_SAFE_OP) {
+        fprintf(stderr,"Slave %d State=%2x StatusCode=%4x : %s\n",
+          i, ec_slave[i].state, ec_slave[i].ALstatuscode, ec_ALstatuscode2string(ec_slave[i].ALstatuscode));
+      }
+    }
     fprintf(stderr, "Could not set EC_STATE_SAFE_OP\n");
     return false;
   }
@@ -327,6 +334,10 @@ uint8_t EtherCatManager::readOutput(int slave_no, uint8_t channel) const
   return ec_slave[slave_no].outputs[channel];
 }
 
+void EtherCatManager::ClearCompleteAccessCOE(int slave ) const {
+  ec_slave[slave].CoEdetails &= ~ECT_COEDET_SDOCA;
+}
+
 template <typename T>
 uint8_t EtherCatManager::writeSDO(int slave_no, uint16_t index, uint8_t subidx, T value) const
 {
@@ -366,6 +377,5 @@ template unsigned char EtherCatManager::readSDO<unsigned char> (int slave_no, ui
 template unsigned int EtherCatManager::readSDO<unsigned int> (int slave_no, uint16_t index, uint8_t subidx) const;
 template unsigned short EtherCatManager::readSDO<unsigned short> (int slave_no, uint16_t index, uint8_t subidx) const;
 template unsigned long EtherCatManager::readSDO<unsigned long> (int slave_no, uint16_t index, uint8_t subidx) const;
-
 }
 
