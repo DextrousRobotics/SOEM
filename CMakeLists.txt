@@ -5,6 +5,9 @@ project(SOEM
     VERSION 1.4.0
     LANGUAGES C)
 
+option(USE_XENOMAI "Use xenomai for RTOS" ON)
+
+
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   # Default to installing in SOEM source directory
   set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_LIST_DIR}/install)
@@ -35,6 +38,23 @@ elseif(UNIX AND NOT APPLE)
   set(OS "linux")
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
   set(OS_LIBS pthread rt)
+
+  ## Configure for XENOMAI.
+  if (USE_XENOMAI)
+  set(OS_LIBS cobalt modechk pthread rt)
+  execute_process(COMMAND xeno-config --posix --cflags OUTPUT_VARIABLE XENO_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+  execute_process(COMMAND xeno-config --posix --ldflags OUTPUT_VARIABLE XENO_LDFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${XENO_CFLAGS} ${XENO_LDFLAGS}")
+  set(CMAKE_C_COMPILER gcc)
+
+  include_directories(
+    /usr/xenomai/include
+    /usr/xenomai/include/cobalt
+  )
+
+  link_directories( /usr/xenomai/lib )
+  endif()
 elseif(APPLE)
   # This must come *before* linux or MacOSX will identify as Unix.
   set(OS "macosx")
