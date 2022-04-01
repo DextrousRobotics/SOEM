@@ -118,7 +118,8 @@ ecx_contextt  ecx_context = {
     &ec_FMMU,           // .eepFMMU       =
     NULL,               // .FOEhook()
     NULL,               // .EOEhook()
-    0                   // .manualstatechange
+    0,                  // .manualstatechange
+    NULL,               // .userdata
 };
 #endif
 
@@ -348,7 +349,7 @@ uint8 ecx_siigetbyte(ecx_contextt *context, uint16 slave, uint16 address)
    {
       mapw = address >> 5;
       mapb = (uint16)(address - (mapw << 5));
-      if (context->esimap[mapw] & (uint32)(1 << mapb))
+      if (context->esimap[mapw] & (1U << mapb))
       {
          /* byte is already in buffer */
          retval = context->esibuf[address];
@@ -379,7 +380,7 @@ uint8 ecx_siigetbyte(ecx_contextt *context, uint16 slave, uint16 address)
          for(lp = 0 ; lp < cnt ; lp++)
          {
             /* set bitmap for each byte that is read */
-            context->esimap[mapw] |= (1 << mapb);
+            context->esimap[mapw] |= (1U << mapb);
             mapb++;
             if (mapb > 31)
             {
