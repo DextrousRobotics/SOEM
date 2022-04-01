@@ -3,7 +3,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_LIST_DIR}/cmake/Modu
 project(SOEM
     DESCRIPTION "Simple Open EtherCAT Master"
     VERSION 1.4.0
-    LANGUAGES C)
+    LANGUAGES C CXX)
 
 option(USE_XENOMAI "Use xenomai for RTOS" ON)
 
