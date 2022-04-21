@@ -3,7 +3,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_LIST_DIR}/cmake/Modu
 project(SOEM
     DESCRIPTION "Simple Open EtherCAT Master"
     VERSION 1.4.0
-    LANGUAGES C)
+    LANGUAGES C CXX)
+
+option(USE_XENOMAI "Use xenomai for RTOS" ON)
+
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   # Default to installing in SOEM source directory
@@ -35,6 +38,23 @@ elseif(UNIX AND NOT APPLE)
   set(OS "linux")
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
   set(OS_LIBS pthread rt)
+
+  ## Configure for XENOMAI.
+  if (USE_XENOMAI)
+  set(OS_LIBS cobalt modechk pthread rt)
+  execute_process(COMMAND xeno-config  --posix --cflags OUTPUT_VARIABLE XENO_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+  execute_process(COMMAND xeno-config --no-auto-init --posix --ldflags OUTPUT_VARIABLE XENO_LDFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${XENO_CFLAGS} ${XENO_LDFLAGS}")
+  set(CMAKE_C_COMPILER gcc)
+
+  include_directories(
+    /usr/xenomai/include
+    /usr/xenomai/include/cobalt
+  )
+
+  link_directories( /usr/xenomai/lib )
+  endif()
 elseif(APPLE)
   # This must come *before* linux or MacOSX will identify as Unix.
   set(OS "macosx")
@@ -69,7 +89,7 @@ file(GLOB SOEM_HEADERS soem/*.h)
 file(GLOB OSAL_HEADERS osal/osal.h osal/${OS}/*.h)
 file(GLOB OSHW_HEADERS oshw/${OS}/*.h)
 
-add_library(soem STATIC
+add_library(soem SHARED
   ${SOEM_SOURCES}
   ${OSAL_SOURCES}
   ${OSHW_SOURCES}
@@ -105,9 +125,10 @@ install(FILES
   ${OSHW_HEADERS}
   DESTINATION ${SOEM_INCLUDE_INSTALL_DIR})
 
-if(BUILD_TESTS) 
+if(BUILD_TESTS)
   add_subdirectory(test/simple_ng)
   add_subdirectory(test/linux/slaveinfo)
   add_subdirectory(test/linux/eepromtool)
   add_subdirectory(test/linux/simple_test)
+  add_subdirectory(test/linux/manager)
 endif()
