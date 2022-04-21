@@ -3,10 +3,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_LIST_DIR}/cmake/Modu
 project(SOEM
     DESCRIPTION "Simple Open EtherCAT Master"
     VERSION 1.4.0
-    LANGUAGES C CXX)
+    LANGUAGES C)
 
 option(USE_XENOMAI "Use xenomai for RTOS" ON)
-
+option(USE_RTNET "Use RTnet for RTOS" ON)
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   # Default to installing in SOEM source directory
@@ -35,25 +35,26 @@ if(WIN32)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  /WX")
   set(OS_LIBS wpcap.lib Packet.lib Ws2_32.lib Winmm.lib)
 elseif(UNIX AND NOT APPLE)
-  set(OS "linux")
+  if (USE_RTNET)
+    set(OS "rtnet")
+  else()
+    set(OS "linux")
+  endif()
+
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
   set(OS_LIBS pthread rt)
 
-  ## Configure for XENOMAI.
-  if (USE_XENOMAI)
-  set(OS_LIBS cobalt modechk pthread rt)
-  execute_process(COMMAND xeno-config  --posix --cflags OUTPUT_VARIABLE XENO_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
-  execute_process(COMMAND xeno-config --no-auto-init --posix --ldflags OUTPUT_VARIABLE XENO_LDFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+  if (USE_XENOMAI OR USE_RTNET)
+    set(OS_LIBS cobalt modechk pthread rt)
+    execute_process(COMMAND xeno-config  --posix --cflags OUTPUT_VARIABLE XENO_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+    execute_process(COMMAND xeno-config --no-auto-init --posix --ldflags OUTPUT_VARIABLE XENO_LDFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${XENO_CFLAGS} ${XENO_LDFLAGS}")
-  set(CMAKE_C_COMPILER gcc)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${XENO_CFLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${XENO_CFLAGS}")
 
-  include_directories(
-    /usr/xenomai/include
-    /usr/xenomai/include/cobalt
-  )
-
-  link_directories( /usr/xenomai/lib )
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${XENO_LDFLAGS}")
+    set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${XENO_LDFLAGS}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${XENO_LDFLAGS}")
   endif()
 elseif(APPLE)
   # This must come *before* linux or MacOSX will identify as Unix.
@@ -127,8 +128,7 @@ install(FILES
 
 if(BUILD_TESTS)
   add_subdirectory(test/simple_ng)
-  add_subdirectory(test/linux/slaveinfo)
+  add_subdirectory(test/${OS}/slaveinfo)
   add_subdirectory(test/linux/eepromtool)
   add_subdirectory(test/linux/simple_test)
-  add_subdirectory(test/linux/manager)
 endif()

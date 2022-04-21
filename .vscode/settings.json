@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.js": "javascriptreact",
+        "*.json": "jsonc",
+        "socket.h": "c",
+        "ioctl.h": "c",
+        "net.h": "c",
+        "rtdm.h": "c",
+        "fcntl.h": "c",
+        "condition_variable": "c"
+    }
+}
