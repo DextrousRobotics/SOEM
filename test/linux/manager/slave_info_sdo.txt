@@ -1,0 +1,418 @@
+SOEM (Simple Open EtherCAT Master)
+Slaveinfo
+Starting slaveinfo
+ec_init on enp6s0 succeeded.
+3 slaves found and configured.
+Calculated workcounter 3
+Not all slaves reached safe operational state.
+Slave 3 State=12 StatusCode=  1e : Invalid input configuration
+
+Slave:1
+ Name:EK1100
+ Output size: 0bits
+ Input size: 0bits
+ State: 4
+ Delay: 0[ns]
+ Has DC: 1
+ DCParentport:0
+ Activeports:1.1.0.0
+ Configured address: 1001
+ Man: 00000002 ID: 044c2c52 Rev: 00120000
+ FMMUfunc 0:0 1:0 2:0 3:0
+ MBX length wr: 0 rd: 0 MBX protocols : 00
+ CoE details: 00 FoE details: 00 EoE details: 00 SoE details: 00
+ Ebus current: -2000[mA]
+ only LRD/LWR:0
+
+Slave:2
+ Name:EK1122
+ Output size: 0bits
+ Input size: 0bits
+ State: 4
+ Delay: 145[ns]
+ Has DC: 1
+ DCParentport:1
+ Activeports:1.0.0.1
+ Configured address: 1002
+ Man: 00000002 ID: 04622c52 Rev: 00110000
+ FMMUfunc 0:0 1:0 2:0 3:0
+ MBX length wr: 0 rd: 0 MBX protocols : 00
+ CoE details: 00 FoE details: 00 EoE details: 00 SoE details: 00
+ Ebus current: 220[mA]
+ only LRD/LWR:0
+
+Slave:3
+ Name:ATI EtherCAT F/T Sensor
+ Output size: 64bits
+ Input size: 224bits
+ State: 18
+ Delay: 725[ns]
+ Has DC: 1
+ DCParentport:3
+ Activeports:1.0.0.0
+ Configured address: 1003
+ Man: 00000732 ID: 26483052 Rev: 00010111
+ SM0 A:1000 L: 128 F:00010026 Type:1
+ SM1 A:1400 L: 128 F:00010022 Type:2
+ SM2 A:1800 L:   8 F:00010064 Type:3
+ SM3 A:1c00 L:  28 F:00010020 Type:4
+ FMMU0 Ls:00000000 Ll:   8 Lsb:0 Leb:7 Ps:1800 Psb:0 Ty:02 Act:01
+ FMMU1 Ls:00000008 Ll:  28 Lsb:0 Leb:7 Ps:1c00 Psb:0 Ty:01 Act:01
+ FMMUfunc 0:1 1:2 2:3 3:0
+ MBX length wr: 128 rd: 128 MBX protocols : 0c
+ CoE details: 23 FoE details: 01 EoE details: 00 SoE details: 00
+ Ebus current: 0[mA]
+ only LRD/LWR:0
+ CoE Object Description found, 26 entries.
+ Index: 1000 Datatype: 0007 (UNSIGNED32) Objectcode: 07 Name: Device type
+  Sub: 00 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 000
+          Value :0x00001389 5001
+ Index: 1001 Datatype: 0005 (UNSIGNED8) Objectcode: 07 Name: Error register
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x00 0
+ Index: 1008 Datatype: 0009 (VISIBLE_STRING) Objectcode: 07 Name: Device name
+  Sub: 00 Datatype: 0009 Bitlength: 00b8 Obj.access: 0007 Name: SubIndex 000
+          Value :ATI EtherCAT F/T Sensor
+ Index: 1009 Datatype: 0009 (VISIBLE_STRING) Objectcode: 07 Name: Hardware version
+  Sub: 00 Datatype: 0009 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 000
+          Value :n.a.
+ Index: 100a Datatype: 0009 (VISIBLE_STRING) Objectcode: 07 Name: Software version
+  Sub: 00 Datatype: 0009 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 000
+          Value :5.10
+ Index: 1018 Datatype: 0023 (Type 0x0023) Objectcode: 09 Name: Identity
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x04 4
+  Sub: 01 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Vendor ID
+          Value :0x00000732 1842
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Product code
+          Value :0x26483052 642265170
+  Sub: 03 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Revision
+          Value :0x00010111 65809
+  Sub: 04 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Serial number
+          Value :0x00000000 0
+ Index: 10f1 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Error Settings
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x02 2
+  Sub: 01 Datatype: 0007 Bitlength: 0020 Obj.access: 003f Name: Local Error Reaction
+          Value :0x00000001 1
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 003f Name: Sync Error Counter Limit
+          Value :0x00000004 4
+ Index: 1601 Datatype: 0021 (Type 0x0021) Objectcode: 09 Name: DO RxPDO-Map
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x02 2
+  Sub: 01 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 001
+          Value :0x70100120 1880097056
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 002
+          Value :0x70100220 1880097312
+ Index: 1802 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: TxPDO Parameter
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x09 9
+  Sub: 07 Datatype: 0001 Bitlength: 0001 Obj.access: 0087 Name: TxPDOState
+          Value :FALSE
+  Sub: 09 Datatype: 0001 Bitlength: 0001 Obj.access: 0087 Name: TxPDO Toggle
+          Value :FALSE
+ Index: 1a00 Datatype: 0021 (Type 0x0021) Objectcode: 09 Name: DI TxPDO-Map
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x08 8
+  Sub: 01 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 001
+          Value :0x60000120 1610613024
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 002
+          Value :0x60000220 1610613280
+  Sub: 03 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 003
+          Value :0x60000320 1610613536
+  Sub: 04 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 004
+          Value :0x60000420 1610613792
+  Sub: 05 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 005
+          Value :0x60000520 1610614048
+  Sub: 06 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 006
+          Value :0x60000620 1610614304
+  Sub: 07 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 007
+          Value :0x60100020 1611661344
+ Index: 1c00 Datatype: 0005 (UNSIGNED8) Objectcode: 08 Name: Sync manager type
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x04 4
+  Sub: 01 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 001
+          Value :0x01 1
+  Sub: 02 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 002
+          Value :0x02 2
+  Sub: 03 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 003
+          Value :0x03 3
+  Sub: 04 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 004
+          Value :0x04 4
+ Index: 1c12 Datatype: 0006 (UNSIGNED16) Objectcode: 08 Name: RxPDO assign
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x01 1
+  Sub: 01 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: SubIndex 001
+          Value :0x1601 5633
+ Index: 1c13 Datatype: 0006 (UNSIGNED16) Objectcode: 08 Name: TxPDO assign
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x01 1
+  Sub: 01 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: SubIndex 001
+          Value :0x1a00 6656
+ Index: 1c32 Datatype: 0029 (Type 0x0029) Objectcode: 09 Name: SM output parameter
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x20 32
+  Sub: 01 Datatype: 0006 Bitlength: 0010 Obj.access: 000f Name: Synchronization Type
+          Value :0x0000 0
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Cycle Time
+          Value :0x00000000 0
+  Sub: 04 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Synchronization Types supported
+          Value :0x401e 16414
+  Sub: 05 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Minimum Cycle Time
+          Value :0x0007a120 500000
+  Sub: 06 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Calc and Copy Time
+          Value :0x00000000 0
+  Sub: 08 Datatype: 0006 Bitlength: 0010 Obj.access: 003f Name: Get Cycle Time
+          Value :0x0000 0
+  Sub: 09 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Delay Time
+          Value :0x00000000 0
+  Sub: 0a Datatype: 0007 Bitlength: 0020 Obj.access: 003f Name: Sync0 Cycle Time
+          Value :0x00000000 0
+  Sub: 0b Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: SM-Event Missed
+          Value :0x0000 0
+  Sub: 0c Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Cycle Time Too Small
+          Value :0x0000 0
+  Sub: 20 Datatype: 0001 Bitlength: 0001 Obj.access: 0007 Name: Sync Error
+          Value :FALSE
+ Index: 1c33 Datatype: 0029 (Type 0x0029) Objectcode: 09 Name: SM input parameter
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x20 32
+  Sub: 01 Datatype: 0006 Bitlength: 0010 Obj.access: 000f Name: Synchronization Type
+          Value :0x0000 0
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Cycle Time
+          Value :0x00000000 0
+  Sub: 04 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Synchronization Types supported
+          Value :0x401e 16414
+  Sub: 05 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Minimum Cycle Time
+          Value :0x0007a120 500000
+  Sub: 06 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Calc and Copy Time
+          Value :0x00000000 0
+  Sub: 08 Datatype: 0006 Bitlength: 0010 Obj.access: 003f Name: Get Cycle Time
+          Value :0x0000 0
+  Sub: 09 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Delay Time
+          Value :0x00000000 0
+  Sub: 0a Datatype: 0007 Bitlength: 0020 Obj.access: 003f Name: Sync0 Cycle Time
+          Value :0x00000000 0
+  Sub: 0b Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: SM-Event Missed
+          Value :0x0000 0
+  Sub: 0c Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Cycle Time Too Small
+          Value :0x0000 0
+  Sub: 20 Datatype: 0001 Bitlength: 0001 Obj.access: 0007 Name: Sync Error
+          Value :FALSE
+ Index: 2020 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Tool Transform
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x06 6
+  Sub: 01 Datatype: 0007 Bitlength: 0020 Obj.access: 033f Name: Rx
+          Value :0x00000000 0
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 033f Name: Ry
+          Value :0x00000000 0
+  Sub: 03 Datatype: 0007 Bitlength: 0020 Obj.access: 033f Name: Rz
+          Value :0x00000000 0
+  Sub: 04 Datatype: 0007 Bitlength: 0020 Obj.access: 033f Name: Dx
+          Value :0x00000000 0
+  Sub: 05 Datatype: 0007 Bitlength: 0020 Obj.access: 033f Name: Dy
+          Value :0x00000000 0
+  Sub: 06 Datatype: 0007 Bitlength: 0020 Obj.access: 033f Name: Dz
+          Value :0x00000000 0
+ Index: 2040 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Calibration
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x3e 62
+  Sub: 01 Datatype: 0009 Bitlength: 0040 Obj.access: 0007 Name: Serial Number
+          Value :FT30042
+  Sub: 02 Datatype: 0009 Bitlength: 00f0 Obj.access: 0007 Name: Part Number
+          Value :SI-1900-80
+  Sub: 03 Datatype: 0009 Bitlength: 0040 Obj.access: 0007 Name: Calibration Family
+          Value :ECat
+  Sub: 04 Datatype: 0009 Bitlength: 00f0 Obj.access: 0007 Name: Calibration Time
+          Value :2020-01-30 05:00:00Z
+  Sub: 05 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FxG0
+          Value :0xffffff20 4294967072
+  Sub: 06 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FxG1
+          Value :0xfffffffc 4294967292
+  Sub: 07 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FxG2
+          Value :0x0000013f 319
+  Sub: 08 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FxG3
+          Value :0xffffe981 4294961537
+  Sub: 09 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FxG4
+          Value :0xffffff5b 4294967131
+  Sub: 0a Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FxG5
+          Value :0x0000162f 5679
+  Sub: 0b Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FyG0
+          Value :0xfffffe8d 4294966925
+  Sub: 0c Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FyG1
+          Value :0x0000197f 6527
+  Sub: 0d Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FyG2
+          Value :0xffffff81 4294967169
+  Sub: 0e Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FyG3
+          Value :0xfffff2d2 4294963922
+  Sub: 0f Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FyG4
+          Value :0x00000189 393
+  Sub: 10 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FyG5
+          Value :0xfffff33c 4294964028
+  Sub: 11 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FzG0
+          Value :0x00001c3a 7226
+  Sub: 12 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FzG1
+          Value :0x0000008f 143
+  Sub: 13 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FzG2
+          Value :0x00001c73 7283
+  Sub: 14 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FzG3
+          Value :0x0000011f 287
+  Sub: 15 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FzG4
+          Value :0x00001be0 7136
+  Sub: 16 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix FzG5
+          Value :0x000000ef 239
+  Sub: 17 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TxG0
+          Value :0xfffffffa 4294967290
+  Sub: 18 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TxG1
+          Value :0x0000005a 90
+  Sub: 19 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TxG2
+          Value :0xffffff0c 4294967052
+  Sub: 1a Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TxG3
+          Value :0xffffffc8 4294967240
+  Sub: 1b Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TxG4
+          Value :0x000000f6 246
+  Sub: 1c Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TxG5
+          Value :0xffffffda 4294967258
+  Sub: 1d Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TyG0
+          Value :0x00000111 273
+  Sub: 1e Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TyG1
+          Value :0x00000004 4
+  Sub: 1f Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TyG2
+          Value :0xffffff71 4294967153
+  Sub: 20 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TyG3
+          Value :0x00000049 73
+  Sub: 21 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TyG4
+          Value :0xffffff7c 4294967164
+  Sub: 22 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TyG5
+          Value :0xffffffaf 4294967215
+  Sub: 23 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TzG0
+          Value :0x0000000a 10
+  Sub: 24 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TzG1
+          Value :0xffffff6d 4294967149
+  Sub: 25 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TzG2
+          Value :0x00000006 6
+  Sub: 26 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TzG3
+          Value :0xffffff6a 4294967146
+  Sub: 27 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TzG4
+          Value :0x00000006 6
+  Sub: 28 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Matrix TzG5
+          Value :0xffffff6c 4294967148
+  Sub: 29 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: Force Units
+          Value :0x02 2
+  Sub: 2a Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: Torque Units
+          Value :0x03 3
+  Sub: 2b Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Max Fx Counts
+          Value :0x0b532b80 190000000
+  Sub: 2c Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Max Fy Counts
+          Value :0x0b532b80 190000000
+  Sub: 2d Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Max Fz Counts
+          Value :0x16a65700 380000000
+  Sub: 2e Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Max Tx Counts
+          Value :0x007a1200 8000000
+  Sub: 2f Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Max Ty Counts
+          Value :0x007a1200 8000000
+  Sub: 30 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Max Tz Counts
+          Value :0x007a1200 8000000
+  Sub: 31 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Counts Per Force
+          Value :0x000186a0 100000
+  Sub: 32 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: Counts Per Torque
+          Value :0x000186a0 100000
+  Sub: 33 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Gain G0
+          Value :0x034d 845
+  Sub: 34 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Gain G1
+          Value :0x0351 849
+  Sub: 35 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Gain G2
+          Value :0x034d 845
+  Sub: 36 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Gain G3
+          Value :0x0353 851
+  Sub: 37 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Gain G4
+          Value :0x034b 843
+  Sub: 38 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Gain G5
+          Value :0x0351 849
+  Sub: 39 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Offset G0
+          Value :0x7422 29730
+  Sub: 3a Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Offset G1
+          Value :0x7495 29845
+  Sub: 3b Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Offset G2
+          Value :0x777a 30586
+  Sub: 3c Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Offset G3
+          Value :0x74a1 29857
+  Sub: 3d Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Offset G4
+          Value :0x7375 29557
+  Sub: 3e Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Offset G5
+          Value :0x760a 30218
+ Index: 2060 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Monitor Condition 1
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x03 3
+  Sub: 01 Datatype: 0004 Bitlength: 0020 Obj.access: 033f Name: Threshold Value
+          Value :0x00000000 0
+  Sub: 02 Datatype: 0005 Bitlength: 0008 Obj.access: 033f Name: Axis
+          Value :0x00 0
+  Sub: 03 Datatype: 0001 Bitlength: 0001 Obj.access: 033f Name: CompareGreaterThan
+          Value :FALSE
+ Index: 2080 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Diagnostic Readings
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x04 4
+  Sub: 01 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: 6V Supply Sense
+          Value :0x0b5e 2910
+  Sub: 02 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Thermistor
+          Value :0x0000 0
+  Sub: 03 Datatype: 0003 Bitlength: 0010 Obj.access: 0007 Name: VBridge Volts
+          Value :0x4396 17302
+  Sub: 04 Datatype: 0003 Bitlength: 0010 Obj.access: 0007 Name: VBridge Current
+          Value :0x0642 1602
+ Index: 2090 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Version
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x03 3
+  Sub: 01 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Major
+          Value :0x0001 1
+  Sub: 02 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Minor
+          Value :0x0000 0
+  Sub: 03 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Revision
+          Value :0x0010 16
+ Index: 6000 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Reading Data
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x06 6
+  Sub: 01 Datatype: 0004 Bitlength: 0020 Obj.access: 0087 Name: Fx/Gage0
+          Value :0xff7e9571 -8481423
+  Sub: 02 Datatype: 0004 Bitlength: 0020 Obj.access: 0087 Name: Fy/Gage1
+          Value :0x0037f35e 3666782
+  Sub: 03 Datatype: 0004 Bitlength: 0020 Obj.access: 0087 Name: Fz/Gage2
+          Value :0xffed0399 -1244263
+  Sub: 04 Datatype: 0004 Bitlength: 0020 Obj.access: 0087 Name: Tx/Gage3
+          Value :0x000321dc 205276
+  Sub: 05 Datatype: 0004 Bitlength: 0020 Obj.access: 0087 Name: Ty/Gage3
+          Value :0x0004b7be 309182
+  Sub: 06 Datatype: 0004 Bitlength: 0020 Obj.access: 0087 Name: Tz/Gage3
+          Value :0xffff36ca -51510
+ Index: 6010 Datatype: 0007 (UNSIGNED32) Objectcode: 07 Name: Status Code
+  Sub: 00 Datatype: 0007 Bitlength: 0020 Obj.access: 0087 Name: SubIndex 000
+          Value :0x00000000 0
+ Index: 6020 Datatype: 0007 (UNSIGNED32) Objectcode: 07 Name: Sample Counter
+  Sub: 00 Datatype: 0007 Bitlength: 0020 Obj.access: 0087 Name: SubIndex 000
+          Value :0x0009aa7f 633471
+ Index: 7010 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Control Codes
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x02 2
+  Sub: 01 Datatype: 0007 Bitlength: 0020 Obj.access: 007f Name: Control 1
+          Value :0x00000000 0
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 007f Name: Control 2
+          Value :0x00000000 0
+ Index: f000 Datatype: 002a (Type 0x002A) Objectcode: 09 Name: Modular device profile
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x02 2
+  Sub: 01 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Module index distance
+          Value :0x0010 16
+  Sub: 02 Datatype: 0006 Bitlength: 0010 Obj.access: 0007 Name: Maximum number of modules
+          Value :0x0003 3
+ Index: f010 Datatype: 0007 (UNSIGNED32) Objectcode: 08 Name: Module profile list
+  Sub: 00 Datatype: 0005 Bitlength: 0008 Obj.access: 0007 Name: SubIndex 000
+          Value :0x03 3
+  Sub: 01 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 001
+          Value :0x00000064 100
+  Sub: 02 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 002
+          Value :0x000000c8 200
+  Sub: 03 Datatype: 0007 Bitlength: 0020 Obj.access: 0007 Name: SubIndex 003
+          Value :0x0000012c 300
+End slaveinfo, close socket
+End program
