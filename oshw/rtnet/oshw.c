@@ -14,46 +14,36 @@
 
 #define MAX_RT_DEVICES 8
 
+struct rt_if_nameindex
+{
+  unsigned int if_index;	/* 1, 2, ... */
+  char if_name[IF_NAMESIZE];		/* null terminated name: "eth0", ... */
+};
+
 /* Return a list of all interfaces and their indices.  */
-__maybe_unused static struct if_nameindex* rt_if_nameindex()
+__maybe_unused static void rt_if_nameindex(struct rt_if_nameindex* nameindex)
 {
   FILE *fh;
-  char buf[512];
-  char dummy[1000];
-  struct if_nameindex* nameindex = malloc(sizeof(if_nameindex) * 8);
-  memset(nameindex, 0, sizeof(if_nameindex) * 8);
-
+  int index;
+  char buf[LINE_MAX];
+  char name[EC_MAXLEN_ADAPTERNAME];
+  char dummy[LINE_MAX];
   fh = fopen("/proc/rtnet/devices", "r");
   if (fh) {
     // eat headers.
     fgets(buf, sizeof buf, fh);
-
     while (fgets(buf, sizeof buf, fh))
     {
-      int index;
-      char* name = malloc(EC_MAXLEN_ADAPTERNAME);
-
-      __maybe_unused int ret = sscanf(buf, "%d %s %s", &index, name, dummy);
+      index = 0;
+      sscanf(buf, "%d %s %s", &index, name, dummy);
       nameindex[index -1].if_index = index;
-      nameindex[index -1].if_name = name;
+      strncpy(nameindex[index -1].if_name, name, IF_NAMESIZE);
     }
 
     fclose(fh);
   }
-
-  return nameindex;
 }
 
-/* Free the data returned from if_nameindex.  */
-__maybe_unused static void rt_if_freenameindex(struct if_nameindex* ids)
-{
-  for(int i = 0; ids[i].if_index != 0; i++)
-  {
-    free(ids[i].if_name);
-  }
-  free(ids);
-  ids = NULL;
-}
 
 /**
  * Host to Network byte order (i.e. to big endian).
@@ -85,7 +75,7 @@ uint16 oshw_ntohs(uint16 network)
 ec_adaptert * oshw_find_adapters(void)
 {
    int i;
-   struct if_nameindex *ids;
+   struct rt_if_nameindex ids[MAX_RT_DEVICES];
    ec_adaptert * adapter;
    ec_adaptert * prev_adapter;
    ec_adaptert * ret_adapter = NULL;
@@ -95,7 +85,7 @@ ec_adaptert * oshw_find_adapters(void)
     * description.
     */
 
-   ids = rt_if_nameindex ();
+   rt_if_nameindex (ids);
    for(i = 0; ids[i].if_index != 0; i++)
    {
       adapter = (ec_adaptert *)malloc(sizeof(ec_adaptert));
@@ -130,8 +120,6 @@ ec_adaptert * oshw_find_adapters(void)
 
       prev_adapter = adapter;
    }
-
-   rt_if_freenameindex (ids);
 
    return ret_adapter;
 }
