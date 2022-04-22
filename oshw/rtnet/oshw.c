@@ -12,6 +12,49 @@
 #include <string.h>
 #include "oshw.h"
 
+#define MAX_RT_DEVICES 8
+
+/* Return a list of all interfaces and their indices.  */
+__maybe_unused static struct if_nameindex* rt_if_nameindex()
+{
+  FILE *fh;
+  char buf[512];
+  char dummy[1000];
+  struct if_nameindex* nameindex = malloc(sizeof(if_nameindex) * 8);
+  memset(nameindex, 0, sizeof(if_nameindex) * 8);
+
+  fh = fopen("/proc/rtnet/devices", "r");
+  if (fh) {
+    // eat headers.
+    fgets(buf, sizeof buf, fh);
+
+    while (fgets(buf, sizeof buf, fh))
+    {
+      int index;
+      char* name = malloc(EC_MAXLEN_ADAPTERNAME);
+
+      __maybe_unused int ret = sscanf(buf, "%d %s %s", &index, name, dummy);
+      nameindex[index -1].if_index = index;
+      nameindex[index -1].if_name = name;
+    }
+
+    fclose(fh);
+  }
+
+  return nameindex;
+}
+
+/* Free the data returned from if_nameindex.  */
+__maybe_unused static void rt_if_freenameindex(struct if_nameindex* ids)
+{
+  for(int i = 0; ids[i].if_index != 0; i++)
+  {
+    free(ids[i].if_name);
+  }
+  free(ids);
+  ids = NULL;
+}
+
 /**
  * Host to Network byte order (i.e. to big endian).
  *
@@ -52,7 +95,7 @@ ec_adaptert * oshw_find_adapters(void)
     * description.
     */
 
-   ids = if_nameindex ();
+   ids = rt_if_nameindex ();
    for(i = 0; ids[i].if_index != 0; i++)
    {
       adapter = (ec_adaptert *)malloc(sizeof(ec_adaptert));
@@ -88,7 +131,7 @@ ec_adaptert * oshw_find_adapters(void)
       prev_adapter = adapter;
    }
 
-   if_freenameindex (ids);
+   rt_if_freenameindex (ids);
 
    return ret_adapter;
 }
