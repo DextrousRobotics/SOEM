@@ -5,8 +5,8 @@ project(SOEM
     VERSION 1.4.0
     LANGUAGES C)
 
-option(USE_XENOMAI "Use xenomai for RTOS" ON)
-option(USE_RTNET "Use RTnet for RTOS" ON)
+option(USE_XENOMAI "Use xenomai for RTOS" OFF)
+option(USE_RTNET "Use RTnet for RTOS" OFF)
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   # Default to installing in SOEM source directory
