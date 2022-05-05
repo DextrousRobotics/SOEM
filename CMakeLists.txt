@@ -131,8 +131,7 @@ if(BUILD_TESTS)
 
   if(UNIX AND NOT APPLE)
     add_subdirectory(test/${OS}/slaveinfo)
+    add_subdirectory(test/${OS}/eepromtool)
+    add_subdirectory(test/${OS}/simple_test)
   endif()
-
-  add_subdirectory(test/linux/eepromtool)
-  add_subdirectory(test/linux/simple_test)
 endif()
