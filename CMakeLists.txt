@@ -127,9 +127,8 @@ install(FILES
   DESTINATION ${SOEM_INCLUDE_INSTALL_DIR})
 
 if(BUILD_TESTS)
-  add_subdirectory(test/simple_ng)
-
   if(UNIX AND NOT APPLE)
+    add_subdirectory(test/simple_ng)
     add_subdirectory(test/${OS}/slaveinfo)
     add_subdirectory(test/${OS}/eepromtool)
     add_subdirectory(test/${OS}/simple_test)
