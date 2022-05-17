@@ -176,7 +176,7 @@ char* SDO2string(uint16 slave, uint16 index, uint8 subidx, uint16 dtype)
    }
    else
    {
-      static char str[64] = { 0 };
+      static char str[1024] = { 0 };
       switch(dtype)
       {
          case ECT_BOOLEAN:
