@@ -24,7 +24,7 @@ extern "C"
 /** max. number of slaves in array */
 #define EC_MAXSLAVE       200
 /** max. number of groups */
-#define EC_MAXGROUP       2
+#define EC_MAXGROUP       3
 /** max. number of IO segments per group */
 #define EC_MAXIOSEGMENTS  64
 /** max. mailbox size */
@@ -426,7 +426,7 @@ struct ecx_context
    int            (*EOEhook)(ecx_contextt * context, uint16 slave, void * eoembx);
    /** flag to control legacy automatic state change or manual state change */
    int            manualstatechange;
-   /** userdata, promotes application configuration esp. in EC_VER2 with multiple 
+   /** userdata, promotes application configuration esp. in EC_VER2 with multiple
     * ec_context instances. Note: userdata memory is managed by application, not SOEM */
    void           *userdata;
 };
